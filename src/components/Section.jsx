@@ -17,10 +17,10 @@ const Setcion = ({ type, params, set }) => {
   }
 
   return (
-    <div>
+    <div className="section">
       Section {type}
       {datas.map((data, index) => (
-        <div key={index} onClick={() => handleClick(type, data.mal_id)}>
+        <div key={index} className="card" onClick={() => handleClick(type, data.mal_id)}>
           <h1>{data.title}</h1>
           <img src={data.images?.webp.image_url} />
         </div>
