@@ -3,6 +3,7 @@ import Nav from "./components/Nav"
 import Home from "./views/Home"
 import Search from "./views/Search"
 import About from "./views/About"
+import Footer from "./views/Footer"
 import "./App.css"
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/manga" element={<Search />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
