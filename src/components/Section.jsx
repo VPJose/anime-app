@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
-const Setcion = ({ type, params, set }) => {
+const Setcion = ({ type, params }) => {
 
   const [datas, setData] = useState([{}])
 
@@ -10,21 +11,20 @@ const Setcion = ({ type, params, set }) => {
       .then(json => setData(json.data))
   }, [])
 
-  const handleClick = async (type, id) => {
-    await fetch(`https://api.jikan.moe/v4/${type}/${id}`)
-      .then(res => res.json())
-      .then(json => set(json.data))
-  }
-
   return (
     <div className="section">
-      Section {type}
-      {datas.map((data, index) => (
-        <div key={index} className="card" onClick={() => handleClick(type, data.mal_id)}>
-          <h1>{data.title}</h1>
-          <img src={data.images?.webp.image_url} />
-        </div>
-      ))}
+      <h2>
+        {type}
+      </h2>
+      <br />
+      <div className="content">
+        {datas.map((data, index) => (
+          <Link to={`/anime/${data.entry?.mal_id}`} key={index} className="card" onClick={() => handleClick(type, data.entry?.mal_id)}>
+            <img src={data.entry?.images?.webp.image_url} />
+            <p>{data.entry?.title}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

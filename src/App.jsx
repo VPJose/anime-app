@@ -3,6 +3,7 @@ import Nav from "./components/Nav"
 import Home from "./views/Home"
 import Search from "./views/Search"
 import About from "./views/About"
+import Info from "./views/Info"
 import Footer from "./views/Footer"
 import "./App.css"
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/anime" element={<Search />} />
         <Route path="/manga" element={<Search />} />
         <Route path="/about" element={<About />} />
+        <Route path="/:type/:id" element={<Info />} />
       </Routes>
       <Footer />
     </div>

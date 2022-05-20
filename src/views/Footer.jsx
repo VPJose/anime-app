@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-cont">
         <h3>About</h3>
-        <p>Tumangaonline no realiza las traducciones aquí realizadas y solo es un repositorio con visor propio para que distintos grupos de traducción puedan compartir sus propios proyectos de forma pública y organizada para el disfrute de todos</p>
+        <p>Este es un proyecto de practica usando HTML, CSS, JAVASCRIPT y REACT con la API de jikan.moe</p>
       </div>
       <div className="footer-site">
         <h3>Site</h3>

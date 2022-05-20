@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
-import Modal from "../components/Modal"
 
 const Search = () => {
   const [datas, setData] = useState([{}])
   const [search, setSearch] = useState("")
-  const [modal, setModal] = useState([{}])
   const path = useLocation().pathname
 
   const handleValue = (event) => {
@@ -22,7 +20,7 @@ const Search = () => {
   const handleClick = async (id) => {
     await fetch(`https://api.jikan.moe/v4${path}/${id}`)
       .then(res => res.json())
-      .then(json => setModal(json.data))
+      .then(json => console.log(json.data))
   }
   return (
     <div>
@@ -37,7 +35,6 @@ const Search = () => {
             <img src={data.images?.jpg.image_url} />
           </div>
         ))}</div>
-      <Modal datos={modal} />
     </div>
   )
 }
