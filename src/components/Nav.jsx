@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { FaSearch, FaMoon, FaSun } from "react-icons/fa"
 
 const Nav = () => {
+
   return (
     <nav>
       <div className="title">
@@ -14,11 +15,11 @@ const Nav = () => {
       </div>
       <form>
         <div>
-          <input type="text" placeholder="Search" />
+          <input type="search" placeholder="Search" />
           <FaSearch className="icon" />
         </div>
       </form>
-      <div className="mode">
+      <div className="mode" >
         <FaSun className="sun" />
         <FaMoon className="moon" />
       </div>

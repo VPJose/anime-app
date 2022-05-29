@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.dark {
+  background: #303030a3;
+}
+
 /* NAV */
 nav {
   display: grid;
@@ -29,8 +33,9 @@ nav .link {
 
 nav .link a, nav .title a {
   text-decoration: none;
-  color: #365147;
+  color: #303030;
   cursor: pointer;
+
 }
 
 nav .link a {
@@ -57,9 +62,10 @@ nav form div input {
 	height: 100%;
 	text-align: center;
 	border-radius: 25px;
+  border: 2px solid #365147;
 }
 
-nav form div .icon{
+nav form div svg{
 	border-radius: 25px;
   position: absolute;
   top: 0;
@@ -67,10 +73,11 @@ nav form div .icon{
   margin-top: 10px;
   cursor: pointer;
   opacity: 0.7;
+  color: #0EDB91;
 }
 
 .mode {
-  border: 1px solid #000;
+  border: 1px solid #365147;
   width: 75px;
   height: 30px;
   border-radius: 20px;
@@ -79,7 +86,7 @@ nav form div .icon{
 }
 
 .sun, .moon {
-    border: 1px solid #000;
+    border: 1px solid #365147;
     border-radius: 50%;
     position: absolute;
     cursor: pointer;
@@ -90,7 +97,7 @@ nav form div .icon{
 }
 
 .moon {
-  background: #000;
+  background: #365147;
   color: #fff;
   right: 0;
 }
@@ -115,7 +122,8 @@ nav form div .icon{
   text-decoration: none;
   font-size: 45px;
   font-family: "Regular";
-  color: #365147;
+  color:  #365147;
+
 }
 
 .section h2::after {
@@ -180,7 +188,7 @@ nav form div .icon{
   width: 100%;
 }
 
-.articule .section ul li a{
+.articule .section ul li div{
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -190,47 +198,6 @@ nav form div .icon{
   color: #365147;
   margin: 5px 0;
   display: block;
-}
-
-/* FOOTER */
-.footer {
-  width: 100%;
-  height: 80px;
-  background: #365147;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  color: #fff;
-  margin-top: 50px;
-  padding-top: 10px;
-  position: absolute;
-  bottom: 0;
-}
-
-.footer-cont {
-  grid-column: 1/3;
-  padding: 0 30px;
-  text-align: left;
-}
-
-.footer-cont h3, .footer-site h3 {
-  font-family: "Regular";
-  text-decoration-line: underline;
-}
-
-.footer-cont p {
-  padding: 20px 0;
-}
-
-.footer-site {
-  grid-column: 3/4;
-  color: white;
-}
-
-.footer-icon {
-  font-size: 40px;
-}
-.footer-icon svg {
-  padding-right: 30px;
   cursor: pointer;
 }
 
@@ -254,6 +221,7 @@ nav form div .icon{
 .info .image img {
   width: 70%;
   height: calc(100vh - 50%);
+  border: 1px solid #000;
   border-radius: 15px;
   padding: 0;
   margin: auto;
@@ -302,4 +270,163 @@ nav form div .icon{
 .info .content .synopsis .text {
   text-align: justify;
   width: 95%;
+}
+
+/*Search*/
+.search {
+  width: calc(100vw - 30%);
+  margin: auto;
+}
+
+.search form {
+  width: 100%;
+  align-content: center;
+  min-height: 50px;
+}
+
+.form-search {
+  width: 80%;
+  margin: auto;
+}
+
+.form-search .input {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.form-search .input input{
+  width: 85%;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #365147;
+  margin-right: 10px;
+}
+
+.form-search .input  button{
+  width: 10%;
+  height: 30px;
+  border-radius: 15px;
+  background: green;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.form-search .button-adv {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  background: #2b48e2;
+}
+
+.form-search .button-adv p{
+  color: #365147;
+  display: inline-block;
+  margin-top: 5px;
+  color: #fff;
+}
+
+.form-search .button-adv svg {
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+  margin-top: 5px;
+}
+
+.search .section .content {
+  margin-bottom: 100px;
+}
+
+.search .section .content .ct-img{
+  width: 40%;
+  margin: auto;
+}
+
+/*About*/
+.about-img {
+  width: 20%;
+  margin: 30px auto;
+}
+
+.about-img img {
+  width: 100%;
+}
+
+.about {
+  width: 30%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.about .cont h3 {
+  margin: 15px 0;
+  font-size: 40px;
+}
+
+.about .cont p {
+  margin: 15px 0;
+  text-align: justify;
+}
+
+.about .site h3 {
+  margin: 15px 0;
+  font-size: 30px;
+}
+
+.about .site .icon {
+  margin: 15px 0;
+  display: flex;
+  flex: flex-grow;
+  justify-content: space-between;
+}
+
+.about .site .icon svg {
+  margin: 15px 0;
+  font-size: 40px;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  height: 80px;
+  background: #365147;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: #fff;
+  margin-top: 50px;
+  padding-top: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer .cont {
+  grid-column: 1/3;
+  padding: 0 30px;
+  text-align: left;
+}
+
+.footer .cont h3, .footer .site h3 {
+  font-family: "Regular";
+  text-decoration-line: underline;
+}
+
+.footer .cont p {
+  padding: 20px 0;
+}
+
+.footer .site {
+  grid-column: 3/4;
+  color: white;
+}
+
+.footer .icon {
+  font-size: 40px;
+}
+
+.footer .icon svg {
+  padding-right: 30px;
+  cursor: pointer;
 }

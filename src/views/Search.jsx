@@ -1,10 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { FaSearch, FaAngleDown } from "react-icons/fa"
+import Card from "../components/Card"
 import { useLocation } from "react-router-dom"
+import image from "../undraw_file_searching_re_3evy.svg"
 
 const Search = () => {
-  const [datas, setData] = useState([{}])
+
+  const [datas, setData] = useState([])
   const [search, setSearch] = useState("")
   const path = useLocation().pathname
+  let data = []
+
+  useEffect(() => {
+    setData([])
+    setSearch("")
+  }, [path])
 
   const handleValue = (event) => {
     setSearch(event.target.value)
@@ -14,27 +24,37 @@ const Search = () => {
     event.preventDefault()
     await fetch(`https://api.jikan.moe/v4${path}?q=${search}&sfw`)
       .then(res => res.json())
-      .then(json => setData(json.data))
+      .then(json => json.data.map(dt => (
+        data.push({
+          id: dt.mal_id,
+          title: dt.title,
+          img: dt.images?.jpg.image_url
+        })
+      )))
+    setData(data)
   }
 
-  const handleClick = async (id) => {
-    await fetch(`https://api.jikan.moe/v4${path}/${id}`)
-      .then(res => res.json())
-      .then(json => console.log(json.data))
-  }
   return (
-    <div>
+    <div className="search">
       <form onSubmit={handleSubmit} >
-        <input type="text" onChange={handleValue} value={search} />
-        <input type="submit" value="search" />
-      </form>
-      <div>{
-        datas.map((data, index) => (
-          <div key={index} onClick={() => handleClick(data.mal_id)}>
-            <p>{data.title}</p>
-            <img src={data.images?.jpg.image_url} />
+        <div className="form-search">
+          <div className="input">
+            <input type="search" onChange={handleValue} value={search} placeholder="Search" />
+            <button><FaSearch /></button>
           </div>
-        ))}</div>
+          <div className="button-adv">
+            <p>Filter</p>
+            <FaAngleDown />
+          </div>
+          <div className="dropdown">
+          </div>
+        </div>
+      </form>
+      <div className="section">
+        <div className="content">
+          {!datas.length ? <img src={image} className="ct-img" /> : <Card datas={datas} path={path} />}
+        </div>
+      </div>
     </div>
   )
 }

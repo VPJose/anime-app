@@ -1,15 +1,28 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Top = () => {
 
-  const [tops, setTop] = useState([{}])
+  const navigate = useNavigate()
+
+  const [tops, setTop] = useState([])
+  const datas = []
 
   useEffect(async () => {
     await fetch(`https://api.jikan.moe/v4/top/anime`)
       .then(res => res.json())
-      .then(json => setTop(json.data))
+      .then(json => json.data.map(dt => (
+        datas.push({
+          id: dt.mal_id,
+          title: dt.title
+        })
+      )))
+    setTop(datas)
   }, [])
+
+  const handleClick = (id, type) => {
+    navigate('/info', { state: { id: id, type: type } })
+  }
 
   return (
     <div className="articule">
@@ -19,7 +32,7 @@ const Top = () => {
           {
             tops.map((top, index) => (
               <li key={index}>
-                <Link to={`/anime/${top.mal_id}`}>{top.title}</Link>
+                <div onClick={() => handleClick(top.id, '/anime')}>{top.title}</div>
               </li>
             ))
           }

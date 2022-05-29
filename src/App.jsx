@@ -13,10 +13,9 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/anime" element={<Search />} />
-        <Route path="/manga" element={<Search />} />
+        <Route path=":type" element={<Search />} />
+        <Route path="/info" element={<Info />} />
         <Route path="/about" element={<About />} />
-        <Route path="/:type/:id" element={<Info />} />
       </Routes>
       <Footer />
     </div>
