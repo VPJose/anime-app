@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { useTheme } from "./context/themeContext"
 import Nav from "./components/Nav"
 import Home from "./views/Home"
 import Search from "./views/Search"
@@ -8,8 +9,13 @@ import Footer from "./views/Footer"
 import "./App.css"
 
 function App() {
+
+  const { darkTheme } = useTheme()
+
+  console.log(darkTheme)
+
   return (
-    <div className="App">
+    <div className={`${darkTheme ? "App dark" : 'App'}`}>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

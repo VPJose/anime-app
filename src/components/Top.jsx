@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTheme } from "../context/themeContext"
 
 const Top = () => {
 
   const navigate = useNavigate()
+
+  const { darkTheme } = useTheme()
 
   const [tops, setTop] = useState([])
   const datas = []
@@ -27,12 +30,14 @@ const Top = () => {
   return (
     <div className="articule">
       <div className="section">
-        <h2>TOP</h2>
-        <ul>
+        <h2 className={`${darkTheme ? 'color-dark' : ''}`}>TOP</h2>
+        <ul className={`${darkTheme ? 'color-dark' : ''}`}>
           {
             tops.map((top, index) => (
               <li key={index}>
-                <div onClick={() => handleClick(top.id, '/anime')}>{top.title}</div>
+                <div
+                  onClick={() => handleClick(top.id, '/anime')}
+                  className={`${darkTheme ? 'color-dark' : ''}`} >{top.title}</div>
               </li>
             ))
           }

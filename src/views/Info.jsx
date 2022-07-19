@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { useTheme } from "../context/themeContext"
 import noFound from '../noFound.png'
+import Pictures from '../components/Pictures'
+import Characters from '../components/Characters'
+import Videos from '../components/Videos'
 
 const Info = () => {
 
+  const { darkTheme } = useTheme()
+
   const [data, setData] = useState({
-    id: 0,
+    id: " ",
     title: " ",
     demographics: " ",
     genres: [],
@@ -27,12 +33,54 @@ const Info = () => {
       }))
   }, [])
 
-  return (<div className="info"> <div className="image"> <img src={data.image}
-    alt={data.title} /> </div> <div className="content"> <p
-      className="title">{data.title}</p> <br /> <div className="genres">
-        {data.genres.map((genre, index) => (<h4 key={index}>{genre.name}</h4>))}
-      </div> <div className="synopsis"> <p className="sy-title">Synposis</p> <p
-        className="text">{data.synopsis}</p> </div> </div> </div>)
+  return (
+    <div className="info">
+      <div className="image">
+        <img
+          src={data.image}
+          alt={data.title}
+          className={`${darkTheme ? 'card-dark' : ''}`} />
+      </div>
+      <div className="content">
+        <p
+          className={`title ${darkTheme ? 'color-dark' : ''}`}>{data.title}
+        </p>
+        <br />
+        <div className="genres">
+          {
+            data.genres.map((genre, index) => (
+              <h4
+                key={index}
+                className={`${darkTheme ? 'genres-dark' : ''}`}>
+                {genre.name}
+              </h4>)
+            )
+          }
+        </div>
+        <div className='synopsis'>
+          <p className={`sy-title ${darkTheme ? 'color-dark' : ''} `}>Synposis</p>
+          <p className={`text ${darkTheme ? 'text-dark' : ''}`}>{data.synopsis}</p>
+        </div>
+        <div className="buttons">
+          <Characters
+            id={id}
+            type={type}
+          />
+          <Pictures
+            id={id}
+            type={type}
+          />
+        </div>
+        {
+          type == "/anime" && (
+            <Videos
+              id={id}
+              type={type}
+            />)
+        }
+      </div>
+    </div>
+  )
 }
 
 export default Info

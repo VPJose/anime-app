@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useTheme } from "../context/themeContext"
 import noFound from '../noFound.png'
 
 const Card = ({ datas, path }) => {
+
+  const { darkTheme } = useTheme()
 
   const navigate = useNavigate()
 
@@ -14,7 +17,7 @@ const Card = ({ datas, path }) => {
       {datas.map((data, index) => (
         <div
           key={index}
-          className="card"
+          className={`card ${darkTheme && 'card-dark'}`}
           onClick={() => handleClick(data.id)}>
           <p>{data.title}</p>
           <img src={data.img ? data.img : noFound} />

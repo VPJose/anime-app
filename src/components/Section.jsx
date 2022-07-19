@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import Card from "../components/Card"
+import { useTheme } from "../context/themeContext"
 
 const Setcion = ({ type, params }) => {
 
+  const { darkTheme } = useTheme()
   const [datas, setData] = useState([])
   let data = []
   const path = '/anime'
@@ -22,7 +24,7 @@ const Setcion = ({ type, params }) => {
 
   return (
     <div className="section">
-      <h2>
+      <h2 className={`${darkTheme ? 'color-dark' : ''}`}>
         {type}
       </h2>
       <br />

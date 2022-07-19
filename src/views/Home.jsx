@@ -5,7 +5,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <main className="main">
+      <main className="main" >
         <Section type={"News"} params={"/watch/episodes"} />
       </main>
       <Top />
