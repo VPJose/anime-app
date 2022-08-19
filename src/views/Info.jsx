@@ -19,7 +19,9 @@ const Info = () => {
     synopsis: " "
   })
 
-  const { id, type } = useLocation().state
+  const { id, type, title } = useLocation().state
+
+  document.title = title
 
   useEffect(async () => {
     await fetch(`https://api.jikan.moe/v4${type}/${id}`)
@@ -37,9 +39,11 @@ const Info = () => {
     <div className="info">
       <div className="image">
         <img
+          loading="lazy"
           src={data.image}
           alt={data.title}
-          className={`${darkTheme ? 'card-dark' : ''}`} />
+          className={`${darkTheme ? 'card-dark' : ''}`}
+        />
       </div>
       <div className="content">
         <p

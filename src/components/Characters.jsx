@@ -50,7 +50,7 @@ const Characters = ({ id, type }) => {
                   className={darkTheme ? 'card card-dark' : 'card'}
                 >
                   <p>{chrc.character.name}</p>
-                  <img src={chrc.character.images?.jpg.image_url} />
+                  <img loading='lazy' src={chrc.character.images?.jpg.image_url} />
                 </div>
               ))
             }
@@ -65,7 +65,7 @@ const Characters = ({ id, type }) => {
                   className={`card ${darkTheme && 'card-dark'}`}
                 >
                   <p>{chrc.character.name}</p>
-                  <img src={chrc.character.images?.jpg.image_url} />
+                  <img loading='lazy' src={chrc.character.images?.jpg.image_url} />
                 </div>
               ))
             }

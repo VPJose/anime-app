@@ -60,6 +60,7 @@ const Search = () => {
       setData([])
       setSearch("")
     }
+    document.title = `Search: ${name.state}`
   }, [path, name])
 
   const handleValue = (event) => {
@@ -68,6 +69,8 @@ const Search = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    document.title = `Search ${search}`
 
     Object.entries(state).forEach(([key, value]) => {
       if (!value == '')

@@ -16,9 +16,10 @@ const Setcion = ({ type, params }) => {
         data.push({
           id: dt.entry?.mal_id,
           title: dt.entry?.title,
-          img: dt.entry?.images?.jpg.image_url
+          img: dt.entry?.images?.webp.image_url
         })
-      )))
+      ))
+      )
     setData(data)
   }, [])
 

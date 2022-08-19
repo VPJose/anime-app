@@ -19,13 +19,12 @@ export const ThemeProvider = ({ children }) => {
   const [darkTheme, setDarkTheme] = useState(false)
 
   useEffect(() => {
-    const theme = window.localStorage.getItem('darkTheme')
-    setDarkTheme(theme)
+    setDarkTheme(JSON.parse(localStorage.getItem('darkTheme')))
   }, [])
 
-  const setLocalStorage = (theme) => {
-    window.localStorage.setItem('darkTheme', theme)
-    setDarkTheme(theme)
+  const setLocalStorage = () => {
+    localStorage.setItem('darkTheme', JSON.stringify(!darkTheme))
+    setDarkTheme(!darkTheme)
   }
 
   return (

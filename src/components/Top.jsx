@@ -23,8 +23,8 @@ const Top = () => {
     setTop(datas)
   }, [])
 
-  const handleClick = (id, type) => {
-    navigate('/info', { state: { id: id, type: type } })
+  const handleClick = (id, type, title) => {
+    navigate('/info', { state: { id: id, type: type, title: title } })
   }
 
   return (
@@ -36,7 +36,7 @@ const Top = () => {
             tops.map((top, index) => (
               <li key={index}>
                 <div
-                  onClick={() => handleClick(top.id, '/anime')}
+                  onClick={() => handleClick(top.id, '/anime', top.title)}
                   className={`${darkTheme ? 'color-dark' : ''}`} >{top.title}</div>
               </li>
             ))

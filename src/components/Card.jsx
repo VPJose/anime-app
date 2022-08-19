@@ -8,8 +8,8 @@ const Card = ({ datas, path }) => {
 
   const navigate = useNavigate()
 
-  const handleClick = (id) => {
-    navigate('/info', { state: { id: id, type: path } })
+  const handleClick = (id, title) => {
+    navigate('/info', { state: { id: id, type: path, title: title } })
   }
 
   return (
@@ -18,9 +18,11 @@ const Card = ({ datas, path }) => {
         <div
           key={index}
           className={`card ${darkTheme && 'card-dark'}`}
-          onClick={() => handleClick(data.id)}>
+          onClick={() => handleClick(data.id, data.title)}>
           <p>{data.title}</p>
-          <img src={data.img ? data.img : noFound} />
+          <img
+            loading='lazy'
+            src={data.img ? data.img : noFound} />
         </div>
       ))}
     </>

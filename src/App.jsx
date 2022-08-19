@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { useTheme } from "./context/themeContext"
+import { useEffect } from "react"
 import Nav from "./components/Nav"
 import Home from "./views/Home"
 import Search from "./views/Search"
@@ -12,7 +13,13 @@ function App() {
 
   const { darkTheme } = useTheme()
 
-  console.log(darkTheme)
+  const path = useLocation().pathname
+
+  const title = path == "/anime" || path == '/manga' ? 'Search' : 'Anime'
+
+  useEffect(() => {
+    document.title = title
+  }, [path])
 
   return (
     <div className={`${darkTheme ? "App dark" : 'App'}`}>

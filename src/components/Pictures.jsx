@@ -36,7 +36,9 @@ const Pictures = ({ id, type }) => {
           <div className="images">
             {
               images.map((img, index) => (
-                <img src={img?.jpg.image_url} key={index} />
+                <img
+                  loading='lazy'
+                  src={img?.jpg.image_url} key={index} />
               ))
             }
           </div>
